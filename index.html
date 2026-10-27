@@ -5,206 +5,315 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#080808">
-<title>CINELUX | Movies & Series</title>
-<meta name="description" content="Discover trending movies, TV series, ratings and trailers on CINELUX.">
+<title>CINELUX | Movies & TV Series</title>
 <style>
 :root{--bg:#080808;--panel:#141414;--gold:#d8b56a;--muted:#aaa}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:#fff;font-family:Arial,Helvetica,sans-serif}
-header{display:flex;align-items:center;justify-content:space-between;padding:18px 5%;border-bottom:1px solid #29231a;gap:12px}
-.logo{font-size:25px;font-weight:900;letter-spacing:3px;color:var(--gold)}
-.logo span{color:white}
-nav{display:flex;gap:17px;flex-wrap:wrap}
 a{color:inherit;text-decoration:none}
-nav a:hover,.gold{color:var(--gold)}
-.hero{padding:65px 6%;min-height:310px;display:flex;align-items:center;background:linear-gradient(90deg,#080808 10%,rgba(8,8,8,.8) 55%,rgba(8,8,8,.15)),url('https://images.unsplash.com/photo-1489599849927-2ee91cede3ba?auto=format&fit=crop&w=1600&q=85') center/cover}
-.hero-content{max-width:590px}
-.eyebrow{color:var(--gold);letter-spacing:4px;font-size:12px;font-weight:bold}
-h1{font-size:clamp(36px,8vw,65px);margin:14px 0}
-.hero p{line-height:1.7;color:#ddd;max-width:490px}
-.btn{display:inline-block;background:var(--gold);color:#111;border:0;padding:12px 18px;border-radius:4px;font-weight:bold;cursor:pointer;margin:8px 7px 0 0}
-.btn.secondary{background:#252525;color:#fff;border:1px solid #555}
-main{padding:26px 5%}
-.toolbar{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:24px}
-input,select,textarea{background:#171717;color:white;border:1px solid #383838;border-radius:5px;padding:12px;font-size:14px}
-input{flex:1;min-width:160px}
-select{max-width:100%;width:auto}
-.section-head{display:flex;align-items:center;justify-content:space-between;gap:10px;margin:25px 0 16px}
-h2{font-size:21px;margin:0}
-.section-head small{color:var(--gold)}
-.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:17px}
-.card{min-width:0;background:var(--panel);border:1px solid #252525;border-radius:7px;overflow:hidden;transition:transform .2s}
-.card:hover{transform:translateY(-4px);border-color:#8c713d}
+button,input,select{font:inherit}
+header{padding:18px 5%;border-bottom:1px solid #29231a;display:flex;align-items:center;justify-content:space-between;gap:15px;flex-wrap:wrap}
+.logo{font-size:25px;font-weight:900;letter-spacing:3px;color:var(--gold)}
+nav{display:flex;gap:16px;flex-wrap:wrap}
+nav a:hover{color:var(--gold)}
+.hero{padding:55px 5%;background:linear-gradient(90deg,#080808,#17130b,#080808)}
+.hero small{color:var(--gold);letter-spacing:3px}
+.hero h1{font-size:clamp(32px,6vw,58px);margin:14px 0}
+.hero p{color:#bbb;line-height:1.7;max-width:650px}
+.wrap{padding:28px 5%}
+.toolbar{display:grid;grid-template-columns:2fr 1fr 1fr;gap:10px;margin-bottom:24px}
+input,select{background:#171717;color:white;border:1px solid #383838;border-radius:7px;padding:13px;width:100%;min-width:0}
+button,.btn{border:0;border-radius:7px;padding:12px 16px;background:var(--gold);color:#111;font-weight:bold;cursor:pointer}
+button:hover,.btn:hover{filter:brightness(1.1)}
+.section-title{display:flex;justify-content:space-between;align-items:center;gap:10px;flex-wrap:wrap}
+h2 span{color:var(--gold)}
+.grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:16px}
+.card{background:var(--panel);border:1px solid #252525;border-radius:10px;overflow:hidden}
 .poster{width:100%;aspect-ratio:2/3;object-fit:cover;display:block;background:#222}
-.card-info{padding:11px}
-.card h3{font-size:14px;margin:0 0 8px;line-height:1.4}
-.meta{font-size:12px;color:var(--muted);line-height:1.7}
-.rating{color:var(--gold);font-weight:bold}
-.card button{width:100%;margin-top:10px;padding:9px 4px;font-size:12px}
+.card-info{padding:12px}
+.card h3{font-size:15px;line-height:1.4;margin:0 0 8px}
+.meta{font-size:12px;color:var(--muted);line-height:1.6}
+.rating{color:var(--gold);margin:9px 0;font-weight:bold}
+.card-actions{display:flex;gap:6px;flex-wrap:wrap}
+.card-actions button{flex:1;padding:10px 6px;font-size:12px}
+.secondary{background:#292929;color:white;border:1px solid #444}
+#status{color:#bbb;padding:15px 0}
 .empty{color:#aaa;padding:28px 0}
-footer{text-align:center;padding:30px 16px;color:#999;border-top:1px solid #28231a;margin-top:40px;font-size:12px;line-height:1.8}
-footer strong{color:var(--gold)}
-.modal{display:none;position:fixed;inset:0;background:#000d;z-index:5;overflow:auto;padding:25px 12px}
-.modal-box{max-width:600px;margin:30px auto;background:#151515;border:1px solid #604d2a;border-radius:9px;padding:22px}
-.modal-box img{width:130px;max-width:40%;float:left;margin:0 16px 12px 0;border-radius:5px}
-.modal-box p{line-height:1.7;color:#ccc}
-.close{float:right;background:none;color:white;border:0;font-size:25px;cursor:pointer}
-.review{clear:both;padding-top:16px}
-.review textarea{width:100%;min-height:80px;margin-top:8px}
-.review-list{color:#ccc;font-size:13px;line-height:1.7}
-@media(max-width:800px){.grid{grid-template-columns:repeat(3,minmax(0,1fr));gap:10px}header{padding:15px 4%}.logo{font-size:20px}nav{gap:10px;font-size:12px}.hero{padding:45px 5%;min-height:280px}}
-@media(max-width:420px){.grid{grid-template-columns:repeat(2,minmax(0,1fr))}nav{gap:8px}.hero{min-height:260px}.card-info{padding:9px}}
+.about{border-top:1px solid #29231a;text-align:center;padding:40px 5%;color:#bbb;line-height:1.8}
+.about strong{color:var(--gold)}
+footer{text-align:center;padding:30px 16px;color:#999;border-top:1px solid #725a30;margin-top:25px;line-height:1.8}
+footer strong{color:var(--gold);letter-spacing:2px}
+.modal{display:none;position:fixed;inset:0;background:#000e;z-index:10;overflow:auto;padding:20px}
+.modal-box{max-width:850px;margin:25px auto;background:#151515;border:1px solid #514326;border-radius:12px;padding:22px}
+.modal-top{display:flex;justify-content:space-between;gap:15px}
+.modal-body{display:grid;grid-template-columns:200px 1fr;gap:22px;margin-top:18px}
+.modal-poster{width:100%;border-radius:8px}
+.modal p{line-height:1.7;color:#ccc}
+.close{background:#292929;color:white}
+.badge{display:inline-block;color:var(--gold);border:1px solid #725a30;padding:5px 9px;border-radius:20px;font-size:12px;margin:3px}
+.trailer{display:inline-block;margin:8px 8px 0 0}
+.credit{font-size:12px;color:#888}
+@media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:520px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.toolbar{grid-template-columns:1fr}.hero{padding:38px 5%}.modal-body{grid-template-columns:110px 1fr}.modal-box{padding:14px}.card-info{padding:9px}}
 </style>
 </head>
 <body>
 <header>
-  <a class="logo" href="#">CINE<span>LUX</span></a>
+  <a class="logo" href="#">CINELUX</a>
   <nav>
     <a href="#home">Home</a>
-    <a href="#movies">Movies</a>
-    <a href="#series">TV Series</a>
+    <a href="#movies">Discover</a>
+    <a href="#watchlist" onclick="setMode('watchlist')">My Watchlist ♥</a>
     <a href="#about">About</a>
   </nav>
 </header>
 
 <section class="hero" id="home">
-  <div class="hero-content">
-    <div class="eyebrow">YOUR WORLD OF CINEMA</div>
-    <h1>Stories Worth<br><span class="gold">Watching.</span></h1>
-    <p>Explore unforgettable movies, discover your next favourite series, and find trailers worth watching.</p>
-    <a class="btn" href="#movies">Explore Movies →</a>
-    <a class="btn secondary" href="#series">Explore Series</a>
-  </div>
+  <small>YOUR WORLD OF CINEMA</small>
+  <h1>Discover your next <span style="color:#d8b56a">favourite.</span></h1>
+  <p>Explore trending movies and TV series, discover new stories, check ratings and find trailers — all in one place.</p>
+  <a class="btn" href="#movies">Explore Titles</a>
 </section>
 
-<main>
-  <div class="toolbar">
-    <input id="search" type="search" placeholder="Search movies and TV series..." aria-label="Search">
-    <select id="genre" aria-label="Filter by category">
-      <option value="all">All Genres</option>
-      <option>Action</option><option>Drama</option>
-      <option>Science Fiction</option><option>Adventure</option>
-      <option>Crime</option><option>Animation</option>
-    </select>
-    <select id="sort" aria-label="Sort movies">
-      <option value="popular">Popular</option>
-      <option value="rating">Top Rated</option>
-      <option value="year">Newest First</option>
-    </select>
+<main class="wrap" id="movies">
+  <div class="section-title">
+    <h2 id="listTitle">Trending <span>Movies & Series</span></h2>
+    <button class="secondary" onclick="loadTrending()">Refresh Trending</button>
   </div>
-
-  <section id="movies">
-    <div class="section-head"><h2>Trending <span class="gold">Movies</span></h2><small>NOW SHOWING</small></div>
-    <div class="grid" id="movieGrid"></div>
-  </section>
-  <section id="series">
-    <div class="section-head"><h2>Popular <span class="gold">TV Series</span></h2><small>WORTH A BINGE</small></div>
-    <div class="grid" id="seriesGrid"></div>
-  </section>
-  <p class="empty" id="empty" hidden>No titles found. Try another search.</p>
-
-  <section id="about">
-    <div class="section-head"><h2>About <span class="gold">CINELUX</span></h2></div>
-    <p style="color:#aaa;line-height:1.8">Your personal destination for discovering movies and television. Explore titles, check ratings, read reviews and find trailers.</p>
-  </section>
+  <div class="toolbar">
+    <input id="search" type="search" placeholder="Search movies and TV series...">
+    <select id="type">
+      <option value="all">Movies & TV Series</option>
+      <option value="movie">Movies only</option>
+      <option value="tv">TV Series only</option>
+      <option value="watchlist">My Watchlist ♥</option>
+    </select>
+    <select id="genre"><option value="">All genres</option></select>
+  </div>
+  <div id="status">Loading trending titles...</div>
+  <div class="grid" id="grid"></div>
+  <p class="credit">Movie data and images provided by TMDB.</p>
 </main>
 
-<div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Title details">
+<section class="about" id="about">
+  <h2>About <strong>CINELUX</strong></h2>
+  <p>Your personal destination for discovering movies and television.<br>
+  Designed with passion by <strong>Akeesha Pilip</strong>.</p>
+  <p><a href="https://www.themoviedb.org/" target="_blank" rel="noopener">Explore The Movie Database (TMDB)</a></p>
+  <p class="credit">This product uses the TMDB API but is not endorsed or certified by TMDB.</p>
+</section>
+
+<footer>
+  <div style="font-size:25px;letter-spacing:4px;color:#d8b56a">CINELUX</div>
+  <p>Designed &amp; Developed by<br><strong>AKEESHA PILIP</strong></p>
+  <p>© 2026 CINELUX · All Rights Reserved</p>
+</footer>
+
+<div class="modal" id="modal" onclick="if(event.target===this)closeDetails()">
   <div class="modal-box">
-    <button class="close" onclick="closeModal()" aria-label="Close">×</button>
-    <div id="details"></div>
-    <div class="review">
-      <h3>Community Reviews</h3>
-      <div class="review-list" id="reviewList"></div>
-      <textarea id="reviewText" maxlength="500" placeholder="Write your review..."></textarea>
-      <button class="btn" onclick="addReview()">Post Review</button>
-      <p class="meta">Demo reviews are saved only in this browser.</p>
+    <div class="modal-top">
+      <h2 id="detailTitle">Title details</h2>
+      <button class="close" onclick="closeDetails()">Close ✕</button>
     </div>
+    <div id="detailContent"></div>
   </div>
 </div>
 
-<footer id="footer">
-  <strong>CINELUX</strong> — Discover the Art of Cinema.<br>
-  Movie information and posters in this demo are illustrative.<br>
-  Trailers open YouTube search results. CINELUX is an independent fan project.
-</footer>
-
 <script>
-const films = [
- {id:1,title:"Inception",year:2010,type:"movie",genre:"Science Fiction",rating:8.8,desc:"A skilled thief enters dreams to steal secrets and faces a seemingly impossible mission.",poster:"https://image.tmdb.org/t/p/w500/oYuLEt3zVCKq57qu2F8dT7NIa6f.jpg"},
- {id:2,title:"Interstellar",year:2014,type:"movie",genre:"Adventure",rating:8.7,desc:"Explorers travel beyond this galaxy in a desperate search for humanity's future.",poster:"https://image.tmdb.org/t/p/w500/gEU2QniE6E77NI6lCU6MxlNBvIx.jpg"},
- {id:3,title:"The Dark Knight",year:2008,type:"movie",genre:"Action",rating:9.0,desc:"Batman faces a criminal mastermind who brings chaos to Gotham City.",poster:"https://image.tmdb.org/t/p/w500/qJ2tW6WMUDux911r6m7haRef0WH.jpg"},
- {id:4,title:"Dune: Part Two",year:2024,type:"movie",genre:"Science Fiction",rating:8.5,desc:"Paul Atreides joins the Fremen on a journey of destiny and revenge.",poster:"https://image.tmdb.org/t/p/w500/1pdfLvkbY9ohJlCjQH2CZjjYVvJ.jpg"},
- {id:5,title:"The Matrix",year:1999,type:"movie",genre:"Science Fiction",rating:8.7,desc:"A hacker discovers the shocking truth behind the world he knows.",poster:"https://image.tmdb.org/t/p/w500/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg"},
- {id:6,title:"Stranger Things",year:2016,type:"series",genre:"Drama",rating:8.6,desc:"A group of friends uncover supernatural mysteries in their small town.",poster:"https://image.tmdb.org/t/p/w500/uOOtwVbSr4QDjAGIifLDwpb2Pdl.jpg"},
- {id:7,title:"Breaking Bad",year:2008,type:"series",genre:"Crime",rating:9.5,desc:"A chemistry teacher enters the dangerous world of the drug trade.",poster:"https://image.tmdb.org/t/p/w500/ztkUQFLlC19CCMYHW9o1zWhJRNq.jpg"},
- {id:8,title:"The Last of Us",year:2023,type:"series",genre:"Drama",rating:8.7,desc:"A hardened survivor escorts a teenager across a dangerous world.",poster:"https://image.tmdb.org/t/p/w500/uKvVjHNqB5VmOrdxqAt2F7J78ED.jpg"},
- {id:9,title:"Wednesday",year:2022,type:"series",genre:"Drama",rating:8.0,desc:"Wednesday Addams investigates mysteries at an unusual academy.",poster:"https://image.tmdb.org/t/p/w500/9PFonBhy4cQy7Jz20NpMygczOkv.jpg"},
- {id:10,title:"Arcane",year:2021,type:"series",genre:"Animation",rating:9.0,desc:"Two sisters find themselves on opposite sides of a growing conflict.",poster:"https://image.tmdb.org/t/p/w500/fqldf2t8ztc9aiwn3k6mlX3tvRT.jpg"}
-];
-const $=id=>document.getElementById(id);
-function escapeHTML(s){return String(s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));}
-function render(){
- const q=$("search").value.trim().toLowerCase(), g=$("genre").value, sort=$("sort").value;
- let list=films.filter(f=>(f.title.toLowerCase().includes(q)||f.genre.toLowerCase().includes(q))&&(g==="all"||f.genre===g));
- if(sort==="rating")list.sort((a,b)=>b.rating-a.rating);
- if(sort==="year")list.sort((a,b)=>b.year-a.year);
- $("movieGrid").innerHTML=cards(list.filter(f=>f.type==="movie"));
- $("seriesGrid").innerHTML=cards(list.filter(f=>f.type==="series"));
- $("empty").hidden=list.length!==0;
+const API_KEY = "45ab21e814ffdbcf44e37ab25995b09e";
+const API = "https://api.themoviedb.org/3";
+const IMG = "https://image.tmdb.org/t/p/w500";
+let titles = [];
+let genres = [];
+let mode = "all";
+let query = "";
+let chosenGenre = "";
+let requestNumber = 0;
+let watchlist = [];
+try { watchlist = JSON.parse(localStorage.getItem("cineluxWatchlist") || "[]"); } catch(e) {}
+
+const $ = id => document.getElementById(id);
+const safe = s => String(s || "").replace(/[&<>"']/g, c => ({
+  "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+}[c]));
+const titleOf = x => x.title || x.name || "Untitled";
+const yearOf = x => (x.release_date || x.first_air_date || "").slice(0,4) || "Year unknown";
+const kindOf = x => x.media_type || (x.first_air_date ? "tv" : "movie");
+const posterOf = x => x.poster_path ? IMG + x.poster_path : "";
+
+async function api(path) {
+  if (API_KEY === "PASTE_YOUR_TMDB_V3_API_KEY_HERE") {
+    throw new Error("Add your TMDB v3 API key in the code first.");
+  }
+  const join = path.includes("?") ? "&" : "?";
+  const response = await fetch(API + path + join + "api_key=" + encodeURIComponent(API_KEY));
+  if (!response.ok) throw new Error("TMDB request failed (" + response.status + "). Check your API key.");
+  return response.json();
 }
-function cards(list){
- if(!list.length)return '<p class="meta">No titles found.</p>';
- return list.map(f=>`<article class="card">
- <img class="poster" src="${f.poster}" alt="${escapeHTML(f.title)} poster" loading="lazy" onerror="this.onerror=null;this.src='https://placehold.co/400x600/171717/D8B56A?text=CINELUX'">
- <div class="card-info"><h3>${escapeHTML(f.title)}</h3>
- <div class="meta">${f.year} · ${f.type==="movie"?"Movie":"TV Series"}</div>
- <div class="rating">★ ${f.rating.toFixed(1)} <span class="meta">/ 10</span></div>
- <button class="btn" onclick="openDetails(${f.id})">View Details</button></div></article>`).join("");
+
+async function loadGenres() {
+  try {
+    const [m,t] = await Promise.all([
+      api("/genre/movie/list?language=en"),
+      api("/genre/tv/list?language=en")
+    ]);
+    genres = [
+      ...(m.genres || []).map(g => ({...g, kind:"movie"})),
+      ...(t.genres || []).map(g => ({...g, kind:"tv"}))
+    ];
+    $("genre").innerHTML = '<option value="">All genres</option>' +
+      genres.map(g => '<option value="' + g.kind + ':' + g.id + '">' +
+      safe(g.name) + ' (' + (g.kind === "movie" ? "Movies" : "TV") + ')</option>').join("");
+  } catch(e) { console.warn(e); }
 }
-function openDetails(id){
- const f=films.find(x=>x.id===id);if(!f)return;
- $("details").innerHTML=`<img src="${f.poster}" alt="${escapeHTML(f.title)} poster" onerror="this.style.display='none'">
- <h2>${escapeHTML(f.title)}</h2><p class="gold">★ ${f.rating.toFixed(1)} / 10 · ${f.year} · ${escapeHTML(f.genre)}</p>
- <p>${escapeHTML(f.desc)}</p><p class="meta">Title details are sample content in this demo.</p>
- <a class="btn" href="https://www.youtube.com/results?search_query=${encodeURIComponent(f.title+" official trailer")}" target="_blank" rel="noopener">▶ Watch Trailer</a>
- <div style="clear:both"></div>`;
- $("reviewText").value="";
- showReviews(id);
- $("modal").style.display="block";
- document.body.style.overflow="hidden";
- $("modal").dataset.id=id;
+
+async function loadTrending() {
+  mode = $("type").value;
+  query = $("search").value.trim();
+  chosenGenre = $("genre").value;
+  $("status").textContent = "Loading trending titles...";
+  try {
+    let data;
+    if (mode === "watchlist") {
+      await loadWatchlist();
+      return;
+    }
+    if (query) {
+      data = await api("/search/multi?language=en-US&include_adult=false&query=" + encodeURIComponent(query));
+      titles = (data.results || []).filter(x => ["movie","tv"].includes(kindOf(x)));
+    } else if (mode === "movie") {
+      data = await api("/trending/movie/week?language=en-US");
+      titles = data.results || [];
+    } else if (mode === "tv") {
+      data = await api("/trending/tv/week?language=en-US");
+      titles = data.results || [];
+    } else {
+      data = await api("/trending/all/week?language=en-US");
+      titles = (data.results || []).filter(x => ["movie","tv"].includes(kindOf(x)));
+    }
+    render();
+  } catch(e) {
+    $("status").textContent = e.message;
+    $("grid").innerHTML = "";
+  }
 }
-function closeModal(){$("modal").style.display="none";document.body.style.overflow="";}
-function showReviews(id){
- let reviews={};
- try{reviews=JSON.parse(localStorage.getItem("cineluxReviews")||"{}")}catch(e){}
- $("reviewList").innerHTML=(reviews[id]||[]).map(r=>"<p>★ "+escapeHTML(r) +"</p>").join("")||"<p>No reviews yet. Be the first!</p>";
+
+function filtered() {
+  return titles.filter(x => {
+    if (mode === "movie" && kindOf(x) !== "movie") return false;
+    if (mode === "tv" && kindOf(x) !== "tv") return false;
+    if (chosenGenre) {
+      const [kind,id] = chosenGenre.split(":");
+      if (kindOf(x) !== kind || !(x.genre_ids || []).includes(Number(id))) return false;
+    }
+    return true;
+  });
 }
-function addReview(){
- const id=$("modal").dataset.id,txt=$("reviewText").value.trim();
- if(!txt){alert("Please write a review first.");return;}
- let reviews={};
- try{reviews=JSON.parse(localStorage.getItem("cineluxReviews")||"{}")}catch(e){}
- reviews[id]=reviews[id]||[];
- reviews[id].unshift(txt);
- try{localStorage.setItem("cineluxReviews",JSON.stringify(reviews));}
- catch(e){alert("Browser storage is unavailable.");return;}
- $("reviewText").value="";showReviews(id);
+
+function render() {
+  const list = filtered();
+  $("listTitle").innerHTML = query ? 'Search <span>Results</span>' :
+    (mode === "watchlist" ? 'My <span>Watchlist</span>' : 'Trending <span>Movies & Series</span>');
+  $("status").textContent = list.length ? list.length + " titles" : "No titles found. Try another search or genre.";
+  $("grid").innerHTML = list.map(x => {
+    const k = kindOf(x), id = Number(x.id);
+    const saved = watchlist.some(w => w.id === id && w.kind === k);
+    const img = posterOf(x);
+    return '<article class="card">' +
+      '<img class="poster" loading="lazy" src="' + safe(img) +
+      '" alt="' + safe(titleOf(x)) + ' poster" onerror="this.style.visibility=\'hidden\'">' +
+      '<div class="card-info"><h3>' + safe(titleOf(x)) + '</h3>' +
+      '<div class="meta">' + safe(yearOf(x)) + ' · ' + (k === "movie" ? "Movie" : "TV Series") + '</div>' +
+      '<div class="rating">★ ' + (Number(x.vote_average || 0).toFixed(1)) + ' / 10</div>' +
+      '<div class="card-actions"><button onclick="showDetails(' + id + ',\'' + k + '\')">Details</button>' +
+      '<button class="secondary" onclick="toggleWatch(' + id + ',\'' + k + '\')">' + (saved ? "♥ Saved" : "＋ Save") + '</button></div>' +
+      '</div></article>';
+  }).join("");
 }
-$("search").addEventListener("input",render);
-$("genre").addEventListener("change",render);
-$("sort").addEventListener("change",render);
-$("modal").addEventListener("click",e=>{if(e.target===$("modal"))closeModal()});
-document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal()});
-render();
+
+function toggleWatch(id, kind) {
+  const item = watchlist.findIndex(w => w.id === id && w.kind === kind);
+  if (item >= 0) watchlist.splice(item,1);
+  else watchlist.push({id,kind});
+  try { localStorage.setItem("cineluxWatchlist", JSON.stringify(watchlist)); }
+  catch(e) { alert("This browser could not save your Watchlist."); }
+  if (mode === "watchlist") loadWatchlist();
+  else render();
+}
+
+async function loadWatchlist() {
+  mode = "watchlist";
+  $("type").value = "watchlist";
+  $("status").textContent = "Loading your saved titles...";
+  const saved = await Promise.all(watchlist.map(async w => {
+    try {
+      const x = await api("/" + w.kind + "/" + w.id + "?language=en-US");
+      return {...x, id:w.id, media_type:w.kind,
+        genre_ids:(x.genres || []).map(g => g.id)};
+    } catch(e) { return null; }
+  }));
+  titles = saved.filter(Boolean);
+  render();
+}
+
+async function showDetails(id, kind) {
+  $("modal").style.display = "block";
+  $("detailTitle").textContent = "Loading details...";
+  $("detailContent").innerHTML = "";
+  document.body.style.overflow = "hidden";
+  try {
+    const d = await api("/" + kind + "/" + id + "?language=en-US&append_to_response=videos,credits");
+    const name = titleOf(d);
+    const videos = d.videos?.results || [];
+    const trailer = videos.find(v => v.site === "YouTube" && v.type === "Trailer") ||
+      videos.find(v => v.site === "YouTube" && v.type === "Teaser");
+    const cast = (d.credits?.cast || []).slice(0,6).map(c => safe(c.name)).join(", ");
+    const g = (d.genres || []).map(x => '<span class="badge">' + safe(x.name) + '</span>').join("");
+    const trailerHTML = trailer
+      ? '<a class="btn trailer" target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=' + encodeURIComponent(trailer.key) + '">▶ Watch Trailer</a>'
+      : '<a class="btn trailer" target="_blank" rel="noopener" href="https://www.youtube.com/results?search_query=' + encodeURIComponent(name + " official trailer") + '">▶ Find Trailer</a>';
+    $("detailTitle").textContent = name;
+    $("detailContent").innerHTML = '<div class="modal-body">' +
+      '<div>' + (d.poster_path ? '<img class="modal-poster" src="' + IMG + d.poster_path + '" alt="Poster">' : '') + '</div>' +
+      '<div><div class="rating">★ ' + Number(d.vote_average || 0).toFixed(1) + ' / 10</div>' +
+      '<div class="meta">' + safe(yearOf(d)) + ' · ' + (kind === "movie" ? "Movie" : "TV Series") +
+      (d.runtime ? ' · ' + d.runtime + ' min' : '') + '</div><p>' + safe(d.overview || "No synopsis available.") + '</p>' +
+      '<div>' + g + '</div><p><strong>Cast:</strong> ' + (cast || "Cast information unavailable") + '</p>' +
+      trailerHTML + ' <button class="secondary" onclick="toggleWatch(' + id + ',\'' + kind + '\')">♥ Save to Watchlist</button>' +
+      '</div></div>';
+  } catch(e) {
+    $("detailTitle").textContent = "Could not load details";
+    $("detailContent").textContent = e.message;
+  }
+}
+function closeDetails() {
+  $("modal").style.display = "none";
+  document.body.style.overflow = "";
+}
+function setMode(next) {
+  $("type").value = next;
+  loadTrending();
+}
+let searchTimer;
+$("search").addEventListener("input", () => {
+  clearTimeout(searchTimer);
+  searchTimer = setTimeout(loadTrending, 400);
+});
+$("type").addEventListener("change", loadTrending);
+$("genre").addEventListener("change", () => {
+  chosenGenre = $("genre").value;
+  render();
+});
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetails(); });
+
+(async function start() {
+  if (API_KEY === "PASTE_YOUR_TMDB_V3_API_KEY_HERE") {
+    $("status").textContent = "Setup needed: add your TMDB v3 API key in the code.";
+    return;
+  }
+  await loadGenres();
+  await loadTrending();
+})();
 </script>
 </body>
-<footer style="background:#101010; color:#d8b56a; text-align:center; padding:30px 15px; margin-top:40px; border-top:1px solid #725a30;">
-  <h2 style="letter-spacing:4px; margin-bottom:10px;">CINELUX</h2>
-  <p style="color:#bbb; margin:8px 0;">Designed &amp; Developed by</p>
-  <h3 style="letter-spacing:2px; color:#e3c47d; margin:8px 0;">AKEESHA PILIP</h3>
-  <p style="color:#888; font-size:12px;">© 2026 CINELUX · All Rights Reserved</p>
-</footer>
-
 </html>
