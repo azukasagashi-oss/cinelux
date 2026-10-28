@@ -55,6 +55,76 @@ footer strong{color:var(--gold);letter-spacing:2px}
 .credit{font-size:12px;color:#888}
 @media(max-width:850px){.grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:520px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.toolbar{grid-template-columns:1fr}.hero{padding:38px 5%}.modal-body{grid-template-columns:110px 1fr}.modal-box{padding:14px}.card-info{padding:9px}}
+
+/* CINELUX PREMIUM HOMEPAGE */
+.hero {
+  min-height: 390px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background-position: center;
+  background-size: cover;
+  border-bottom: 1px solid #725a30;
+}
+.hero h1 {
+  max-width: 750px;
+  text-shadow: 0 3px 15px #000;
+}
+.hero p {
+  text-shadow: 0 2px 8px #000;
+}
+.home-row {
+  padding: 24px 5%;
+}
+.home-row h2 {
+  font-size: 23px;
+  margin: 0 0 18px;
+}
+.home-row h2 span {
+  color: #d8b56a;
+}
+.poster-strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: 155px;
+  gap: 14px;
+  overflow-x: auto;
+  padding-bottom: 15px;
+  scroll-snap-type: x mandatory;
+}
+.home-card {
+  background: #141414;
+  border: 1px solid #302719;
+  border-radius: 9px;
+  overflow: hidden;
+  scroll-snap-align: start;
+}
+.home-card img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+  background: #222;
+}
+.home-card-info { padding: 10px; }
+.home-card h3 {
+  font-size: 14px;
+  line-height: 1.4;
+  min-height: 39px;
+  margin: 0 0 7px;
+}
+.home-card .rating { font-size: 12px; }
+.home-card button {
+  width: 100%;
+  padding: 9px 5px;
+  font-size: 12px;
+}
+.home-loading { color: #aaa; padding: 12px 0; }
+@media(max-width:520px) {
+  .hero { min-height: 330px; }
+  .poster-strip { grid-auto-columns: 135px; gap: 10px; }
+  .home-row h2 { font-size: 20px; }
+}
 </style>
 </head>
 <body>
