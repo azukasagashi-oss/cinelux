@@ -295,7 +295,77 @@ async function loadTrending() {
   }
 }
 
-function filtered() {
+
+async function loadHomeSections() {
+  const sections = [
+    {
+      id: "homeTrending",
+      path: "/trending/all/week?language=en-US",
+      kind: "mixed"
+    },
+    {
+      id: "homeMovies",
+      path: "/movie/popular?language=en-US",
+      kind: "movie"
+    },
+    {
+      id: "homeSeries",
+      path: "/tv/popular?language=en-US",
+      kind: "tv"
+    },
+    {
+      id: "homeRated",
+      path: "/movie/top_rated?language=en-US",
+      kind: "movie"
+    }
+  ];
+
+  async function loadSection(section) {
+    const el = $(section.id);
+
+    try {
+      const data = await api(section.path);
+      const items = (data.results || [])
+        .filter(x => x.poster_path)
+        .slice(0, 15);
+
+      if (!items.length) {
+        el.innerHTML =
+          '<p class="home-loading">No titles available.</p>';
+        return;
+      }
+
+      el.innerHTML = items.map(x => {
+        const kind =
+          section.kind === "mixed" ? kindOf(x) : section.kind;
+
+        return `
+          <article class="home-card">
+            <img loading="lazy"
+              src="${safe(posterOf(x))}"
+              alt="${safe(titleOf(x))} poster">
+            <div class="home-card-info">
+              <h3>${safe(titleOf(x))}</h3>
+              <div class="rating">
+                ★ ${Number(x.vote_average || 0).toFixed(1)} / 10
+              </div>
+              <button onclick="showDetails(${Number(x.id)}, '${kind}')">
+                View Details
+              </button>
+            </div>
+          </article>
+        `;
+      }).join("");
+    } catch (e) {
+      el.innerHTML =
+        '<p class="home-loading">Could not load titles.</p>';
+    }
+  }
+
+  await Promise.all(sections.map(loadSection));
+}
+
+  function filtered() {
   return titles.filter(x => {
     if (mode === "movie" && kindOf(x) !== "movie") return false;
     if (mode === "tv" && kindOf(x) !== "tv") return false;
