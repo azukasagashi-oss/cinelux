@@ -57,15 +57,23 @@ footer strong{color:var(--gold);letter-spacing:2px}
 @media(max-width:520px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.toolbar{grid-template-columns:1fr}.hero{padding:38px 5%}.modal-body{grid-template-columns:110px 1fr}.modal-box{padding:14px}.card-info{padding:9px}}
 
 /* CINELUX PREMIUM HOMEPAGE */
-.hero {
-  min-height: 390px;
+  .hero {
+  min-height: 430px;
   display: flex;
   flex-direction: column;
   justify-content: center;
+  padding: 55px 5%;
+  background:
+    linear-gradient(90deg,
+      rgba(0,0,0,0.95) 0%,
+      rgba(0,0,0,0.72) 48%,
+      rgba(0,0,0,0.18) 100%),
+    url("https://image.tmdb.org/t/p/original/8b8R8l88Qje9dn9OE8PY05Nxl1X.jpg");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
   border-bottom: 1px solid #725a30;
-}
+  }
 .hero h1 {
   max-width: 750px;
   text-shadow: 0 3px 15px #000;
