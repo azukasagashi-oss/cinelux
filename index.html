@@ -475,11 +475,16 @@ document.addEventListener("keydown", e => { if (e.key === "Escape") closeDetails
 
 (async function start() {
   if (API_KEY === "PASTE_YOUR_TMDB_V3_API_KEY_HERE") {
-    $("status").textContent = "Setup needed: add your TMDB v3 API key in the code.";
+    $("status").textContent =
+      "Setup needed: add your TMDB v3 API key in the code.";
     return;
   }
-  await loadGenres();
-  await loadTrending();
+
+  await Promise.all([
+    loadGenres(),
+    loadTrending(),
+    loadHomeSections()
+  ]);
 })();
 </script>
 </body>
