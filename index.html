@@ -145,7 +145,34 @@ footer strong{color:var(--gold);letter-spacing:2px}
   <a class="btn" href="#movies">Explore Titles</a>
 </section>
 
-<main class="wrap" id="movies">
+<section class="home-row" id="trending-home">
+  <h2>🔥 <span>Trending</span> Now</h2>
+  <div class="poster-strip" id="homeTrending">
+    <p class="home-loading">Loading trending movies...</p>
+  </div>
+</section>
+
+<section class="home-row" id="popular-home">
+  <h2>🎬 <span>Popular</span> Movies</h2>
+  <div class="poster-strip" id="homeMovies">
+    <p class="home-loading">Loading popular movies...</p>
+  </div>
+</section>
+
+<section class="home-row" id="series-home">
+  <h2>📺 Popular TV <span>Series</span></h2>
+  <div class="poster-strip" id="homeSeries">
+    <p class="home-loading">Loading TV series...</p>
+  </div>
+</section>
+
+<section class="home-row" id="rated-home">
+  <h2>⭐ <span>Top Rated</span> Movies</h2>
+  <div class="poster-strip" id="homeRated">
+    <p class="home-loading">Loading top rated movies...</p>
+  </div>
+</section>
+  <main class="wrap" id="movies">
   <div class="section-title">
     <h2 id="listTitle">Trending <span>Movies & Series</span></h2>
     <button class="secondary" onclick="loadTrending()">Refresh Trending</button>
