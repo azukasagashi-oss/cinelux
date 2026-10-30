@@ -221,6 +221,97 @@ footer strong{color:var(--gold);letter-spacing:2px}
     transform: none;
   }
 }
+  /* CINELUX PREMIUM MOVIE DETAILS MODAL */
+
+.modal {
+  background: rgba(0, 0, 0, 0.88);
+  backdrop-filter: blur(8px);
+  padding: 16px;
+}
+
+.modal-box {
+  max-width: 850px;
+  background: linear-gradient(145deg, #191919, #0d0d0d);
+  border: 1px solid rgba(216, 181, 106, 0.55);
+  border-radius: 18px;
+  box-shadow: 0 0 35px rgba(216, 181, 106, 0.15);
+  padding: 22px;
+}
+
+.modal-top {
+  align-items: center;
+  border-bottom: 1px solid #40331d;
+  padding-bottom: 12px;
+}
+
+.modal-top h2 {
+  color: #d8b56a;
+  font-size: 25px;
+}
+
+.modal-top .close {
+  padding: 10px 15px;
+  border: 1px solid #514326;
+  border-radius: 9px;
+}
+
+.modal-body {
+  align-items: start;
+}
+
+.modal-poster {
+  border: 1px solid #725a30;
+  box-shadow: 0 5px 18px #000;
+}
+
+.modal-body .rating {
+  font-size: 20px;
+}
+
+.modal-body p {
+  line-height: 1.8;
+}
+
+.modal-body .trailer {
+  margin-top: 12px;
+}
+
+.modal-body .secondary {
+  margin-top: 12px;
+}
+
+@media (max-width: 520px) {
+  .modal {
+    padding: 10px;
+  }
+
+  .modal-box {
+    margin: 12px auto;
+    padding: 14px;
+    border-radius: 14px;
+  }
+
+  .modal-top h2 {
+    font-size: 20px;
+  }
+
+  .modal-body {
+    grid-template-columns: 100px minmax(0, 1fr);
+    gap: 13px;
+  }
+
+  .modal-body .rating {
+    font-size: 16px;
+  }
+
+  .modal-body .trailer,
+  .modal-body .secondary {
+    display: inline-block;
+    max-width: 100%;
+    font-size: 12px;
+    padding: 10px;
+  }
+}
 </style>
 </head>
 <body>
